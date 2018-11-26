@@ -1,0 +1,42 @@
+." Created by Ian Burgwin.
+.TH "NH-LOGS" 1 "2018-11-17" "Nintendo Homebrew"
+.SH NAME
+nh-logs \- go directly to the panopticon logs directory
+.SH DESCRIPTION
+\fBnh-logs\fP is an alias that changes your current directory to the logs directory.
+The logs directory contains chat logs for Nintendo Homebrew, created by panopticon.
+.SS View logs via SFTP
+You can use an SFTP client of your choice (e.g. Cyberduck, WinSCP, FileZilla, Transmit) to browse and view the logs.
+The file paths to the logs are in the
+.B FILES
+section of this page.
+.SS Searching logs
+To search logs, use \fBag\fP from the_silver_searcher to search all files in the current directory.
+.PP
+Some examples of using \fBag\fP to search:
+.TP
+.B ag -a Piracy
+Search for all instances of "Piracy"
+.TP
+.B ag -ai Piracy
+Search for all instances of "Piracy", case-insensitive
+.TP
+.B ag -ai 'Pir Acy'
+Search for all instances of "Pir Acy", case-insensitive (single- or double-quotes is needed to include spaces)
+.TP
+.B ag -aiQ Pi.Ra.Cy
+Search for all instances of "Pi.Ra.Cy", without regex, case-insensitive
+.SH NOTES
+Logs older than about 2017-09-20 must be accessed with the
+.B nh-older-logs
+command.
+Note that these are not very well organized.
+.SH FILES
+.TP
+.I /home/nh-services/panopticon/panopticon/logs
+Location of the logs.
+.TP
+.I /home/nh-services/panopticon/older-logs
+Location of logs before 2017-09-20.
+.SH SEE ALSO
+.BR ag (1)

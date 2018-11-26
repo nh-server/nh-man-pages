@@ -1,0 +1,53 @@
+." Created by Ian Burgwin.
+.TH "NH-MAN" 7 "2018-11-19" "Nintendo Homebrew"
+.SH NAME
+nh-man \- getting started on using man
+.SH DESCRIPTION
+.B man
+is a UNIX command that displays manual pages.
+This will explain the basics of using \fBman\fP.
+In this guide, you will learn how to open and navigate open pages.
+.SH NAVIGATION
+You can use the
+.I up and down arrow keys
+to navigate line by line.
+You can also use some other keys like \fIk\fP and \fIj\fP.
+.PP
+Use the
+.I Page Up and Page Down
+keys to navigate down one window (the screen height).
+You can also use some other keys like \fIp\fP and \fIf\fP.
+.SH OPENING MANUAL PAGES
+To open this manual page, you used the command `man nh-man'.
+So to use other manual pages, you would do something like `man name-of-manual-page'.
+.PP
+Sometimes, you will see something like this:
+
+.BR "    nh-logs" "(7)"
+
+This means you should open the 7th section of the nh-logs manual.
+To do so, you enter either `man nh-logs.7` or `man 7 nh-logs`.
+.SH READING MANUAL PAGES
+Manual pages for commands contain a \fBSYNOPSIS\fP section which explains the command syntax.
+Here are some examples:
+.TP
+\fBcommand\fP \fBargument\fP
+One argument that must be typed exactly as-is
+.TP
+\fBcommand\fP \fIargument\fP
+One required argument
+.TP
+\fBcommand\fP [\fIargument\fP]
+One optional argument
+.TP
+\fBcommand\fP \fIargument\fP ...
+A required argument that can be repeated
+.TP
+\fBcommand\fP [\fIargument\fP] ...
+An optional argument that can be repeated
+.TP
+\fBcommand\fP [\fB-abc\fP]
+A set of optional arguments (letters a, b, and c are optional)
+.TP
+\fBcommand\fP \fB-a\fP|\fB-b\fP
+Two arguments that cannot be used together (e.g. if you use -a, you can't use -b at the same time)
