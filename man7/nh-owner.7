@@ -1,0 +1,108 @@
+." Created by Ian Burgwin.
+.TH "NH-OWNER" 7 "2018-11-25" "Nintendo Homebrew"
+.SH NAME
+nh-owner \- information for owners of Nintendo Homebrew
+.SH DESCRIPTION
+This explains commands and other information to owners.
+.SH COMMANDS
+.TP
+.B nhctl
+Contains various commands to manage the system, services, and users.
+See
+.BR nhctl (1)
+for details.
+.SH SYSTEMD UNITS (OLD)
+NH services run as \fIsystemd units\fP.
+You should use
+.BR nhctl (1)
+for managing services, unless you need to interact with systemd directly.
+There are four units, with the following names:
+.PP
+.PD 0
+.TP 20
+.B kurisu
+Kurisu, the main bot
+.TP 20
+.B panopticon
+panopticon, the logger
+.TP 20
+.B mod-mail
+discord-mod-mail, the mod-mail system
+.TP 20
+.B ninupdates-check
+ninupdates-check, the system update checker
+.PD
+.PP
+Unit file names and usernames are identical for each service.
+.SS Controlling systemd units
+The services can be controlled by using \fBsystemctl\fP.
+A few example commands are listed below.
+.TP
+.BI "systemctl link " "./kurisu.service"
+Link the
+.I kurisu.service
+unit file in the current directory, so it can be used by \fIsystemd\fP.
+Note that
+.B systemctl link
+requires a directory separator, so the name
+.I kurisu.service
+would not be enough.
+See the
+.B FILES
+section for the location of the NH unit files.
+.TP
+.BI "systemctl enable " "kurisu"
+Enable the
+.I kurisu
+unit.
+This will allow the unit to start on boot, and allow you to manually start it.
+.TP
+.BI "systemctl disable " "kurisu"
+Disable the
+.I kurisu
+unit.
+This will also unlink it, so you must use
+.B systemctl link
+before you can re-enable it.
+.TP
+.BI "systemctl start " "kurisu"
+Start the
+.I kurisu
+unit.
+.TP
+.BI "systemctl restart " "kurisu"
+Restart the
+.I kurisu
+unit.
+.TP
+.BI "systemctl stop " "kurisu"
+Stop the
+.I kurisu
+unit.
+.TP
+.B "systemctl daemon-reload"
+Reload unit files after editing them.
+You must use this command if a unit file was edited while it was in use.
+.SS Viewing the journal
+The
+.I systemd journal
+is where the output of units is stored.
+You can view the output with \fBjournalctl\fP.
+A few example commands are listed below.
+.TP
+.BI "journalctl -u " "kurisu"
+View the full journal for the 
+.I kurisu
+unit
+.TP
+.BI "journalctl -f -u " "kurisu"
+View the last few messages of the
+.I kurisu
+unit, and follow updates
+.SH FILES
+.TP
+.I /opt/nintendohomebrew/etc/nhd/units
+Custom NH service unit files for \fIsystemd\fP.
+.SH SEE ALSO
+.BR journalctl (1),
+.BR systemctl (1)
